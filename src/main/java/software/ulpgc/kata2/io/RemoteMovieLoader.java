@@ -52,6 +52,6 @@ public class RemoteMovieLoader implements MovieLoader {
     }
 
     private InputStream unzip(InputStream inputStream ) throws IOException {
-        return new GZIPInputStream(new BufferedInputStream(inputStream, 4096));
+        return new GZIPInputStream(new BufferedInputStream(inputStream, 96));
     }
 }
