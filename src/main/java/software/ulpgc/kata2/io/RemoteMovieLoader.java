@@ -38,7 +38,7 @@ public class RemoteMovieLoader implements MovieLoader {
     private List<Movie> loadFrom(BufferedReader reader) throws IOException {
         MovieParser parser = new TSVMovieParser();
         List<Movie> list = new ArrayList<>();
-        reader.lines();
+        reader.readLine();
         while (true){
             String line = reader.readLine();
             if (line == null) break;
