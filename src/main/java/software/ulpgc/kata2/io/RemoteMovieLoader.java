@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
-import static com.sun.tools.jdeprscan.scan.CPEntries.loadFrom;
 
 public class RemoteMovieLoader implements MovieLoader {
     @Override
