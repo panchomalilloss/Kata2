@@ -15,27 +15,27 @@ public class RemoteMovieLoader implements MovieLoader {
     @Override
     public List<Movie> loadAll(){
         try {
-            return loadForm(new URL("https://datasets.imdbws.com/title.basics.tsv.gz"));
+            return loadFrom(new URL("https://datasets.imdbws.com/title.basics.tsv.gz"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private List<Movie> loadForm(URL url) throws IOException {
-        return loadForm(url.openConnection());
+    private List<Movie> loadFrom(URL url) throws IOException {
+        return loadFrom(url.openConnection());
     }
 
-    private List<Movie> loadForm(URLConnection connection) throws IOException {
+    private List<Movie> loadFrom(URLConnection connection) throws IOException {
         try (InputStream is = unzip(connection.getInputStream())) {
-            return loadForm(is);
+            return loadFrom(is);
         }
     }
 
-    private List<Movie> loadForm(InputStream is) throws IOException {
-        return loadForm(toReader(is));
+    private List<Movie> loadFrom(InputStream is) throws IOException {
+        return loadFrom(toReader(is));
     }
 
-    private List<Movie> loadForm(BufferedReader reader) throws IOException {
+    private List<Movie> loadFrom(BufferedReader reader) throws IOException {
         MovieParser parser = new TSVMovieParser();
         List<Movie> list = new ArrayList<>();
         reader.lines();
